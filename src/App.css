@@ -13,10 +13,10 @@ body{
   text-align: center;
   min-width: 100vw;
   padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .matchesInfo{
-  min-width: 100vw;
   text-align: center;
 }
 
@@ -37,13 +37,26 @@ body{
 }
 
 .victoryMatch{
-  color: #1a78ae;
-  background-color: #4aa1d2;
+  color: rgb(0, 0, 255);
+  background-color: rgba(74,161,210,.9);
 }
 
 .lossMatch{
-  color: rgb(238, 90, 82);
-  background-color:#e2b6b3;
+  color: rgb(238, 33, 23);
+  background-color:rgba(226,182,179.9);
+}
+
+.matchContainer{
+  border: solid rgb(200,200,200) 1px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 1px #ccc;
+  transition: transform 2s;
+}
+
+.matchContainer:hover{
+  transform: scale(1.05,1.05);
+  transition: transform 1s;
 }
 
 .matchState{
@@ -56,3 +69,52 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+.championImage{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.championName{
+  font-size: 1.5em;
+  color: rgb(50,50,50);
+}
+
+.champStats{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.champTextStats{
+  display: flex;
+  flex-direction: column;
+}
+
+.creepStats{
+  color: green;
+  padding: 20px;
+}
+
+.kdaStats{
+  display: flex;
+  padding: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemList{
+  color: purple;
+}
+
+.runesAndSpells{
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
