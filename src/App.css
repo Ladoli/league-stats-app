@@ -1,0 +1,58 @@
+body{
+  background-color: rgb(50,50,50);
+}
+
+.App {
+  display: flex;
+	align-items: center;
+  justify-content: center;
+  min-height: 25vh;
+}
+
+.formContainer{
+  text-align: center;
+  min-width: 100vw;
+  padding-bottom: 40px;
+}
+
+.matchesInfo{
+  min-width: 100vw;
+  text-align: center;
+}
+
+.summonerNameInput {
+  border-radius: 5px;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.summonerNameSubmit {
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: white;
+  box-shadow: 0 0 10px #a5ffff;
+  background-color: rgba(0,191,255, .7); 
+  color: rgb(240,240,240);
+}
+
+.victoryMatch{
+  color: #1a78ae;
+  background-color: #4aa1d2;
+}
+
+.lossMatch{
+  color: rgb(238, 90, 82);
+  background-color:#e2b6b3;
+}
+
+.matchState{
+  padding: 10px;
+}
+
+.matchTable{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
