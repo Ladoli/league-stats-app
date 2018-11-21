@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { map, isEmpty } from 'lodash';
+import swal from 'sweetalert2';
 import './App.css';
 import { EFFICIENT_CHAMP_LIST, EFFICIENT_ITEM_LIST, EFFICIENT_RUNE_LIST, EFFICIENT_SPELL_LIST, LEAGUE_SERVER } from './config';
 
@@ -17,6 +18,11 @@ class App extends Component {
 
 
   handleSubmit = (page) => {
+    swal({
+      title: "Fetching match data, please wait.",
+      html: "Taking long? The Heroku server is probably <b><span style='color:red;'>waking up</span>!</b>"
+    })
+    swal.showLoading();
     axios.get(LEAGUE_SERVER + "?summonerName=" + this.state.summonerName + "&page=" + page, {
       headers: {
         'Accept': 'application/json',
@@ -26,11 +32,13 @@ class App extends Component {
       this.setState({
         matchInfo: res.data,
         error: null
-      })
+      });
+      swal.close();
     }).catch(err=>{
       this.setState({
         error: "There was a problem looking for the matches. Please try again later!"
       })
+      swal.close();
     });
   }
 
