@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { map } from 'lodash';
+import { map, isEmpty } from 'lodash';
 import './App.css';
 import { EFFICIENT_CHAMP_LIST, EFFICIENT_ITEM_LIST, EFFICIENT_RUNE_LIST, EFFICIENT_SPELL_LIST, LEAGUE_SERVER } from './config';
 
@@ -9,22 +9,28 @@ import { EFFICIENT_CHAMP_LIST, EFFICIENT_ITEM_LIST, EFFICIENT_RUNE_LIST, EFFICIE
 class App extends Component {
   state = {
     matchInfo: null,
-    summonerName: ""
+    summonerName: "",
+    error: null,
+    page: 1
   }
 
-  handleSubmit = () => {
-    axios.get(LEAGUE_SERVER + "?summonerName=" + this.state.summonerName, {
+
+
+  handleSubmit = (page) => {
+    axios.get(LEAGUE_SERVER + "?summonerName=" + this.state.summonerName + "&page=" + page, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
     }).then(res=>{
-      console.log(res.data)
       this.setState({
-        matchInfo: res.data
+        matchInfo: res.data,
+        error: null
       })
     }).catch(err=>{
-      console.log(err)
+      this.setState({
+        error: "There was a problem looking for the matches. Please try again later!"
+      })
     });
   }
 
@@ -39,7 +45,17 @@ class App extends Component {
     console.log(this.state)
     return (
       <div className="App">
-        <div>
+      {
+        !isEmpty(this.state.error) && (
+          <div className="errorMessage">
+            <div>
+              {this.state.error}
+            </div>
+          </div>
+        ) 
+      }
+      
+        <div style={{paddingTop: "80px"}}>
           <div className="formContainer">
             <input 
               className="summonerNameInput" 
@@ -50,10 +66,22 @@ class App extends Component {
             <br/>
             <button 
               className="summonerNameSubmit" 
-              onClick={()=>this.handleSubmit()}>
+              onClick={()=>this.handleSubmit(0)}>
               Find Match Data
             </button>
           </div>
+
+          {
+            this.state.matchInfo && this.state.matchInfo.summonerName &&
+            (
+              <div className="summonerNameDisplay">
+                Displaying Matches for <br/> 
+                <span className="summonerNameEmbelish" >
+                  {this.state.matchInfo.summonerName}
+                </span>
+              </div>
+            )
+          }
 
           <div className="matchesInfo">
           {
@@ -70,10 +98,7 @@ class App extends Component {
               let spell2Name = EFFICIENT_SPELL_LIST[value.spell2Id].name;
               let primaryRuneName = value.primaryRune ? EFFICIENT_RUNE_LIST[value.primaryRune].name : "";
               let secondaryRuneName = value.secondaryRune ? EFFICIENT_RUNE_LIST[value.secondaryRune].name : "";
-              
-              console.log(value.item6)
-
-
+            
               let items = {
                 0: value.item0 ?  EFFICIENT_ITEM_LIST[value.item0] ? EFFICIENT_ITEM_LIST[value.item0].name : "" : "",
                 1: value.item1 ?  EFFICIENT_ITEM_LIST[value.item1] ? EFFICIENT_ITEM_LIST[value.item1].name : "" : "",
