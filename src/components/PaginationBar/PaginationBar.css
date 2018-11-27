@@ -1,0 +1,48 @@
+.paginationBarContainer{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+select{
+  margin: 10px;
+  border-radius: 5px;
+  color: rgb(60, 247, 253);
+  text-shadow: rgb(150,150,150) 0 0 3px;
+  background-color: rgba(0,191,255, .7);
+  box-shadow: 0 0 2px rgba(165,255,255, .7);
+}
+
+option{
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(150,150,150);
+}
+
+.pageHelp{
+  color: rgb(23, 247, 255);
+  text-shadow: rgb(150,150,150) 0 0 3px;
+}
+
+
+select.alter{
+  margin: 0px 10px;
+  border-radius: 5px;
+  color: rgb(240, 240, 240);
+  text-shadow: rgb(50,50,50) 0 0 3px;
+  background-color: rgba(255,64,0, .7);
+  box-shadow: 0 0 2px rgba(90,0,0, .7);
+}
+
+option{
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(50,50,50);
+}
+
+
+
+.pageHelp.alter{
+  color: rgb(232, 8, 2);
+  text-shadow: rgb(50,50,50) 0 0 3px;
+}
