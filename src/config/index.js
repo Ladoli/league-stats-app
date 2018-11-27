@@ -20,5 +20,5 @@ export const EFFICIENT_RUNE_LIST = keyBy(map(runeList, (value,key)=>{
     }
 }),'id');
 export const EFFICIENT_SPELL_LIST = keyBy(spellList, 'key');
-export const LEAGUE_SERVER = "http://localhost:5000/";
-// export const LEAGUE_SERVER = "https://ladoli-league-server.herokuapp.com/";
+// export const LEAGUE_SERVER = "http://localhost:5000/";
+export const LEAGUE_SERVER = "https://ladoli-league-server.herokuapp.com/";
